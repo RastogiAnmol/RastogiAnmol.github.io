@@ -472,7 +472,7 @@ ul#nav li.current a { color: #F06000; }
    -webkit-animation: jquery 2s ease;
 }
 .tfs {
-   width: 80%;
+   width: 70%;
    -moz-animation: jquery 2s ease;
    -webkit-animation: jquery 2s ease;
 }
@@ -513,6 +513,16 @@ ul#nav li.current a { color: #F06000; }
 }
 .hibernate {
    width: 60%;
+   -moz-animation: jquery 2s ease;
+   -webkit-animation: jquery 2s ease;
+}
+.docker {
+   width: 50%;
+   -moz-animation: jquery 2s ease;
+   -webkit-animation: jquery 2s ease;
+}
+.kubernetes {
+   width: 50%;
    -moz-animation: jquery 2s ease;
    -webkit-animation: jquery 2s ease;
 }
