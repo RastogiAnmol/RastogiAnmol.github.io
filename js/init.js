@@ -19,28 +19,34 @@
 /* Smooth Scrolling
 ------------------------------------------------------ */
 // Prevent page jumps
-    $("a[classname='smoothscroll']").on("click", function(event) {
-        event.preventDefault();
-        window.history.pushState({}, "", this.href);
-    });
-   $('.smoothscroll').on('click',function (e) {
-	    e.preventDefault();
+   $(".smoothscroll").on("click", function (e) {
+     e.preventDefault();
 
-	    var target = this.hash,
-	    $target = $(target);
-        window.location.url = target;
-        function getScrollHeight(){
-            if(window.screen.width > 550){
-               return $target.offset().top - $("#nav-wrap").height()
+     var target = this.hash,
+       $target = $(target);
+     function getScrollHeight() {
+       if (window.screen.width < 550) {
+         return $target.offset().top;
+       }
+       return $target.offset().top - $("#nav-wrap").height();
+     }
+     $("html, body")
+       .stop()
+       .animate(
+         {
+           scrollTop: getScrollHeight(),
+         },
+         800,
+         "swing",
+         function () {
+            if (window.screen.width < 550) {
+                window.location.hash = target;
+            } else{
+                window.history.replaceState({}, "", target);
             }
-            return $target.offset().top
-        }
-	    $('html, body').stop().animate({
-	        'scrollTop': getScrollHeight()
-	    }, 800, 'swing', function () {
-	        // window.history.pushState({});
-	    });
-	});
+         }
+       );
+   });
 
 
 /*----------------------------------------------------*/
