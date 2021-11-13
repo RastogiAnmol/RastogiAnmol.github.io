@@ -19,7 +19,7 @@
 /* Smooth Scrolling
 ------------------------------------------------------ */
 // Prevent page jumps
-    $("a[href^=#]").on("click", function(event) {
+    $("a[classname='smoothscroll']").on("click", function(event) {
         event.preventDefault();
         window.history.pushState({}, "", this.href);
     });
@@ -29,8 +29,14 @@
 	    var target = this.hash,
 	    $target = $(target);
         window.location.url = target;
+        function getScrollHeight(){
+            if(window.screen.width > 550){
+               return $target.offset().top - $("#nav-wrap").height()
+            }
+            return $target.offset().top
+        }
 	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top - $("#nav-wrap").height()
+	        'scrollTop': getScrollHeight()
 	    }, 800, 'swing', function () {
 	        // window.history.pushState({});
 	    });
