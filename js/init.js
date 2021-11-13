@@ -18,17 +18,21 @@
 /*----------------------------------------------------*/
 /* Smooth Scrolling
 ------------------------------------------------------ */
-
+// Prevent page jumps
+    $("a[href^=#]").on("click", function(event) {
+        event.preventDefault();
+        window.history.pushState({}, "", this.href);
+    });
    $('.smoothscroll').on('click',function (e) {
 	    e.preventDefault();
 
 	    var target = this.hash,
 	    $target = $(target);
-
+        window.location.url = target;
 	    $('html, body').stop().animate({
-	        'scrollTop': $target.offset().top
+	        'scrollTop': $target.offset().top - $("#nav-wrap").height()
 	    }, 800, 'swing', function () {
-	        window.location.hash = target;
+	        // window.history.pushState({});
 	    });
 	});
 
